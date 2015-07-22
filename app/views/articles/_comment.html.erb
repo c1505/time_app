@@ -1,0 +1,28 @@
+<div>
+    <h4>Birth Date <%= comment.author_name %></h4>
+    <p class="comment"><%= comment.body %></p>
+    <p> Posted at <%= comment.updated_at %></p>
+    <p> <% cdate = comment.body.split("-") %></p>
+    <p> <% year = cdate[0] %> </p>
+    <p><% month = cdate[1] %></p>
+    <p><% day = cdate[2] %></p>
+    <p> You turn one billion seconds on: <%= Time.mktime(year, month, day) + 1000000000 %> </p>
+</div>
+
+
+<!--puts Time.mktime(1985, 1,1) + 1000000000-->
+<!--#when do you turn one billion seconds old-->
+<!--#get year-->
+<!--#gets chomp-->
+<!--def one_billion_seconds(year, month, day)-->
+<!--    Time.mktime(year, month, day) + 1000000000-->
+<!--end-->
+
+<!--# puts one_billion_seconds(1980, 1, 21)-->
+<!--puts "What is your year of birth"-->
+<!--year = gets.chomp-->
+<!--puts "what is your month of birth"-->
+<!--month = gets.chomp-->
+<!--puts "what is your day of birth?"-->
+<!--day = gets.chomp-->
+<!--puts "you will turn one billion seconds in #{   one_billion_seconds(year, month, day)})"-->

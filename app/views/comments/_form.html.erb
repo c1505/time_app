@@ -1,0 +1,12 @@
+<h3>You</h3>
+<%= form_for [ @article, @comment ] do |f| %>
+    <p>
+        <%= f.label :body, "What is your birth date?" %><br/>
+        <%= f.date_field :body %>
+    </p>
+        <%= f.label :author_name, "Name?" %><br/>
+        <%= f.text_field :author_name %>
+    <p>
+        <%= f.submit 'Submit' %>
+    </p>
+<% end %>
