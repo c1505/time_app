@@ -1,3 +1,2 @@
-# jumpstart-blogger
-odin project jumpstart blogger tutorial/project
-https://github.com/c1505/jumpstart-blogger.git
+# time_app
+rails project to track time spent on learning a new skill
