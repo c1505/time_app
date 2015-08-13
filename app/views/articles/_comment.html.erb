@@ -1,12 +1,9 @@
 <div>
-    <h4>Birth Date <%= comment.author_name %></h4>
-    <p class="comment"><%= comment.body %></p>
-    <p> Posted at <%= comment.updated_at %></p>
-    <p> <% cdate = comment.body.split("-") %></p>
-    <p> <% year = cdate[0] %> </p>
-    <p><% month = cdate[1] %></p>
-    <p><% day = cdate[2] %></p>
-    <p> You turn one billion seconds on: <%= Time.mktime(year, month, day) + 1000000000 %> </p>
+    <h4>Notes: <%= comment.author_name %></h4>
+    <p class="comment">Start: <%= comment.start %></p>
+    <p class="comment">End: <%= comment.end %></p>
+    <p class="comment">Time Spent: <%= comment.total %> Hours</p>
+    
 </div>
 
 

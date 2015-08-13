@@ -1,12 +1,23 @@
-<h3>You</h3>
+<h3></h3>
 <%= form_for [ @article, @comment ] do |f| %>
     <p>
-        <%= f.label :body, "What is your birth date?" %><br/>
-        <%= f.date_field :body %>
+        <%= f.label :start, "Start Time:" %><br/>
+        <!--<%= f.time_field :start %>-->
+        <%= f.time_select :start, :value => @comment.start, :default => Time.now - 4.hours%>
+        
+        
+    <p>
+        <%= f.label :start, "End Time:" %><br/>
+        <%= f.time_select :end, :value => @comment.end, :default => Time.now - 4.hours%>
     </p>
-        <%= f.label :author_name, "Name?" %><br/>
+        
+        
+    </p>
+        <%= f.label :author_name, "Note" %><br/>
         <%= f.text_field :author_name %>
     <p>
         <%= f.submit 'Submit' %>
     </p>
 <% end %>
+
+
