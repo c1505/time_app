@@ -15,6 +15,13 @@
 <!--    <% end %>-->
 </p>
 
+<p>
+  <audio controls>
+      <source src= "/audio/Extreme Ode to Joy.mp3" type="audio/mpeg">
+Your browser does not support the audio element.
+   </audio>
+</p>
+
 
 <%= link_to "<< Back to Articles List", articles_path %>
 <%= link_to "delete", article_path(@article), method: :delete, data: {confirm: "Really delete the article?"}%>
