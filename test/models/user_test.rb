@@ -6,8 +6,20 @@ class UserTest < ActiveSupport::TestCase
   # end
   
   def setup
-    @user = User.new(name: "bob", email: "bob@fred.com")
+    @user = User.new(name: "bob", email: "bob@fred.com", password: "foobar",
+                     password_confirmation: "foobar")
   end
+  
+  test "password present" do
+    @user.password = @user.password_confirmation = "   "
+    assert_not @user.valid?
+  end
+  
+  test "password at least 6 characters" do
+    @user.password = @user.password_confirmation = "a" * 5
+    assert_not @user.valid?
+  end
+    
   
   test "username present" do
     @user.name = "fred"
