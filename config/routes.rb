@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
-  get 'user/new'
-
     root to: 'articles#index'
+    get 'signup'  => 'users#new'
+    resources :users
     resources :articles do 
         resources :comments
     end
     resources :tags
+    
 end
 
