@@ -3,8 +3,11 @@ Rails.application.routes.draw do
     get 'signup'  => 'users#new'
     resources :users
     resources :articles do 
-        resources :comments
+        resources :comments, shallow: true
     end
+    #trying without nesting/namespacing
+    # resources :articles
+    # resources :comments
     resources :tags
     
 end

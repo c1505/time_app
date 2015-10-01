@@ -6,10 +6,29 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
+
 <body>
-<p class="flash"><%= flash.notice%></p>
-<%= yield %>
-<%= debug(params) if Rails.env.development? %>)
+  
+  <header class="navbar navbar-fixed-top navbar-inverse">
+      <div class="container">
+        <%= link_to "Time App", articles_path, id: "logo" %>
+        <nav>
+          <ul class="nav navbar-nav navbar-right">
+            <li><%= link_to "Home",   articles_path %></li>
+            <li><%= link_to "New Project", new_article_path%></li>
+            <li><%= link_to "Raptorize!", users_path%></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <div>
+      
+    </div>
+    <div class="container">
+      <%= yield %>
+    </div>
+    <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
 </body>
 </html>
 

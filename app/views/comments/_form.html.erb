@@ -1,23 +1,26 @@
 <h3></h3>
 <%= form_for [ @article, @comment ] do |f| %>
-    <p>
-        <%= f.label :start, "Start Time:" %><br/>
-        <!--<%= f.time_field :start %>-->
-        <%= f.time_select :start, :value => @comment.start, :default => Time.now - 4.hours%>
+    <p class="time_boxes">
+        <%= f.label :start, "Start Time:" %>
+        <%= f.time_select :start, :value => @comment.start, :default => Time.current%>
+    </p>   
         
-        
-    <p>
-        <%= f.label :start, "End Time:" %><br/>
-        <%= f.time_select :end, :value => @comment.end, :default => Time.now - 4.hours%>
+    <p class="time_boxes">
+        <%= f.label :start, "End Time:" %>
+        <%= f.time_select :end, :value => @comment.end, :default => Time.current + 1.hour %>
     </p>
         
         
-    </p>
+    <p>
         <%= f.label :author_name, "Note" %><br/>
         <%= f.text_field :author_name %>
+    </p>
     <p>
-        <%= f.submit 'Submit' %>
+        <%= f.submit 'Submit', :class => "btn btn-lg btn-primary"%>
+        
     </p>
 <% end %>
+
+
 
 

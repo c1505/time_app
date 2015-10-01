@@ -11,20 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150817045859) do
+ActiveRecord::Schema.define(version: 20150913235629) do
 
   create_table "articles", force: :cascade do |t|
     t.string   "title"
     t.text     "body"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
-    t.float    "project_time"
+    t.float    "project_time",       default: 0.0, null: false
     t.integer  "user_id"
     t.float    "sound_count"
+    t.float    "estimated_time",     default: 0.0, null: false
+    t.float    "est_to_hireable",    default: 0.0, null: false
+    t.float    "current_pace",       default: 0.0, null: false
   end
 
   create_table "comments", force: :cascade do |t|

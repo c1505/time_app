@@ -1,6 +1,44 @@
 <h1>Project: <%= @article.title %></h1>
-<h2><%=@article.project_time %> Total Hours</h2>
-<%= render partial: 'comments/form' %>
+<h2>Hours Complete: <%=@article.project_time %> </h2>
+
+<h2>Current Pace:<%=@article.current_pace %></h2>
+    
+      <div class="row">
+        <div class="col-md-3">
+            <p><u>@current pace</u></p>
+            <p><strong><%= (" #{((@article.estimated_time - @article.project_time)/ @article.current_pace ).to_i / 7}   weeks until MVP") unless @article.current_pace == 0 %></strong></p>
+            <p><strong><%= (" #{((@article.est_to_hireable - @article.project_time) / @article.current_pace).to_i / 7}  weeks until hireable") unless @article.current_pace == 0 %></strong></p>
+        </div>
+        <div class="col-md-3">
+            <p><u>if one more hour today</u></p>
+            <p><strong><%= (" #{((@article.estimated_time - @article.project_time)/ (@article.current_pace + 1) ).to_i / 7}   weeks until MVP") unless @article.current_pace == 0 %></strong></p>
+            <p><strong><%= (" #{((@article.est_to_hireable - @article.project_time) / (@article.current_pace + 1)).to_i / 7}  weeks until hireable") unless @article.current_pace == 0 %></strong></p>
+        </div>
+        <div class="col-md-3">
+            <p><u>if 3 hours today</u></p>
+            <p><strong><%= (" #{((@article.estimated_time - @article.project_time)/ 3 ).to_i / 7}   weeks until MVP") unless @article.current_pace == 0 %></strong></p>
+            <p><strong><%= (" #{((@article.est_to_hireable - @article.project_time) / 3 ).to_i / 7}  weeks until hireable") unless @article.current_pace == 0 %></strong></p>
+        </div>
+    </div>
+      
+      
+      <div class="row">
+        <div class="col-md-3"><%= render partial: 'comments/form' %></div>
+        <div class="col-md-3">
+            <p>Estimated hours until MVP: <%=@article.estimated_time - @article.project_time%></p>
+<p>Estimated hours until hireable: <%=@article.est_to_hireable - @article.project_time %></p>
+        </div>
+      </div>
+
+<div class="progress">
+  <div class="progress-bar" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="200" style="width: <%=(@article.current_pace / 3) * 100%>%">
+    <span class="sr-only">30% Complete</span>
+  </div>
+</div>
+
+
+
+
 <h3>Logs(<%= @article.comments.size %>)</h3>
 <%= render partial: 'articles/comment', collection: @article.comments %>
 
@@ -9,13 +47,11 @@
     <% @article.tags.each do |tag| %>
         <%= link_to tag.name, tag_path(tag) %>
     <% end %>
-</p>
-<!--<p> <% if @article.image.exists? %>-->
-<!--        <%= image_tag @article.image.url %><br />-->
-<!--    <% end %>-->
-</p>
+
 
 <%= render partial: 'show' if @article.project_time.to_f > (@article.sound_count ||= 1) %>
+
+<%= link_to "body", "https://odin-c1505.c9.io/users" %>
 
 <%= link_to "<< Back to Articles List", articles_path %>
 <%= link_to "delete", article_path(@article), method: :delete, data: {confirm: "Really delete the article?"}%>
