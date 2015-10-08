@@ -1,0 +1,12 @@
+<h3></h3>
+<%= form_for [ @article, @comment ] do |f| %>
+    <p class="time_boxes">
+        <%= f.label :start, "Start Time:" %>
+        <%= f.time_select :start, :value => @comment.start, :default => Time.current%>
+    </p>   
+    <p>
+        <%= f.submit 'Start', :class => "btn btn-lg btn-primary"%>
+        
+    </p>
+<% end %>
+

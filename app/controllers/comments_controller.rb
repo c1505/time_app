@@ -9,10 +9,18 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.new(comment_params)
     @comment.article_id = params[:article_id]
-    @comment.total = ((@comment.end - @comment.start) / 60 / 60).round(2)
+    
     @article = Article.find(@comment.article_id)
-    @article.project_time ||= @comment.total
-    @article.project_time += @comment.total
+    
+    if !@comment.end.nil?
+      @comment.total = ((@comment.end - @comment.start) / 60 / 60).round(2)
+      
+      @article.project_time ||= @comment.total
+      @article.project_time += @comment.total
+      @article.current_pace = 0
+    (@article.comments.where(created_at: (Time.current.midnight)..Time.current.midnight + 1.day)).each {|f| @article.current_pace += f.total }
+      
+    end
     
     
     
@@ -21,8 +29,7 @@ class CommentsController < ApplicationController
     
     @comment.save
     
-    @article.current_pace = 0
-    (@article.comments.where(created_at: (Time.current.midnight)..Time.current.midnight + 1.day)).each {|f| @article.current_pace += f.total }
+    
     
     @article.save
     
@@ -34,6 +41,11 @@ class CommentsController < ApplicationController
     flash.notice = "Time Record '#{@comment.total}' Deleted"
     @article = Article.find(@comment.article_id)
     @article.update_attribute(:project_time, (@article.project_time - @comment.total) )
+    
+    @article.current_pace = 0
+    (@article.comments.where(created_at: (Time.current.midnight)..Time.current.midnight + 1.day)).each {|f| @article.current_pace += f.total }
+    @article.save
+    
     redirect_to article_path(@comment.article)
   end
   

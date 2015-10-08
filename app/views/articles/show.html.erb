@@ -1,7 +1,10 @@
 <h1>Project: <%= @article.title %></h1>
 <h2>Hours Complete: <%=@article.project_time %> </h2>
-
-<h2>Current Pace:<%=@article.current_pace %></h2>
+<%if !@article.comments.empty? %>
+    <%if @article.comments.last.updated_at.midnight == Time.current.midnight %>
+        <h2>Current Pace:<%=@article.current_pace %></h2>
+    <% end %>
+<%end%>
     
       <div class="row">
         <div class="col-md-3">
@@ -24,6 +27,15 @@
       
       <div class="row">
         <div class="col-md-3"><%= render partial: 'comments/form' %></div>
+        <div class="col-md-3">
+        <%if !@article.comments.empty? %>
+            <% if @article.comments.last.end.nil? %>
+                <%= render partial: 'comments/end' %>
+                <% else %>
+                <%= render partial: 'comments/form2' %>
+                <%end%>
+        <%end%>
+        </div>
         <div class="col-md-3">
             <p>Estimated hours until MVP: <%=@article.estimated_time - @article.project_time%></p>
 <p>Estimated hours until hireable: <%=@article.est_to_hireable - @article.project_time %></p>
@@ -49,7 +61,7 @@
     <% end %>
 
 
-<%= render partial: 'show' if @article.project_time.to_f > (@article.sound_count ||= 1) %>
+<%= render partial: 'show' if (@article.project_time.to_f - 0.99) > (@article.sound_count ||= 1) %>
 
 <%= link_to "body", "https://odin-c1505.c9.io/users" %>
 

@@ -4,7 +4,5 @@
 Your browser does not support the audio element.
    </audio>
 </p>
-<% @article.sound_count ||= 0 %>
-<% @article.sound_count += 1 %>
-<% @article.save %>
+<% @article.update_attribute(:sound_count, @article.project_time) %>
 
