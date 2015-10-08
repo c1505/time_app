@@ -12,8 +12,10 @@ class CommentsController < ApplicationController
     
     @article = Article.find(@comment.article_id)
     
+    @comment.total = ((@comment.end - @comment.start) / 60 / 60).round(2)
+    @comment.save
     if !@comment.end.nil?
-      @comment.total = ((@comment.end - @comment.start) / 60 / 60).round(2)
+      
       
       @article.project_time ||= @comment.total
       @article.project_time += @comment.total
@@ -27,7 +29,7 @@ class CommentsController < ApplicationController
 
     
     
-    @comment.save
+    
     
     
     
