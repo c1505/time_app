@@ -27,6 +27,11 @@ gem 'paperclip' #imagemagick is installed to go with this gem
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'autoprefixer-rails'
 
+gem 'json', '~> 1.8.3'
+gem 'httparty'
+
+# gem "github_api"
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
