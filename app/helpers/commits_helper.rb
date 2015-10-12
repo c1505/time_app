@@ -1,9 +1,9 @@
 module CommitsHelper
      require 'json'
      require 'httparty'
-   def github_commits
+   def github_commits(user)
           
-      response = HTTParty.get('https://api.github.com/users/c1505/events/public')
+      response = HTTParty.get("https://api.github.com/users/#{user}/events/public")
       events = JSON.parse(response.body)
       @commit_messages = []
       events.each do |event|

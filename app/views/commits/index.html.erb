@@ -1,5 +1,11 @@
+<%= form_tag("/commits", method: "get") do %>
+  <%= label_tag(:q, "Search for:") %>
+  <%= text_field_tag(:q) %>
+  <%= submit_tag("Search") %>
+<% end %>
 
-<h1>Time_App Commit messages</h1>
+<h1><%=params[:q]%> Commit messages</h1>
 <% @commit_messages.each do |f| %>
 <ul><%= f %></ul>
 <%end%>
+
