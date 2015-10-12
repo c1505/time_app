@@ -30,6 +30,7 @@ gem 'autoprefixer-rails'
 gem 'json', '~> 1.8.3'
 gem 'httparty'
 
+
 # gem "github_api"
 
 # Use ActiveModel has_secure_password

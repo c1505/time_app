@@ -10,5 +10,7 @@ Rails.application.routes.draw do
     # resources :comments
     resources :tags
     
+    resources :commits
+    
 end
 
