@@ -21,7 +21,4 @@ module ArticlesHelper
           end
      end
      
-     def testing_method
-          @item = "string"
-     end
 end
