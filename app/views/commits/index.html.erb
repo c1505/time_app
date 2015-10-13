@@ -2,10 +2,17 @@
   <%= label_tag(:q, "Search for:") %>
   <%= text_field_tag(:q) %>
   <%= submit_tag("Search") %>
+
+
 <% end %>
 
-<h1><%=params[:q]%> Commit messages</h1>
-<% @commit_messages.each do |f| %>
-<ul><%= f %></ul>
+<% unless params[:q].nil? %>
+  <h1><%=params[:q]%> Commit messages</h1>
+
+    <% @commit_messages.each do |f| %>
+    <ul><%= f %></ul>
+    <%end%>
 <%end%>
+<%= @result %>here
+
 
