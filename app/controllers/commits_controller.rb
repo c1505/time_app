@@ -3,7 +3,7 @@ class CommitsController < ApplicationController
     def index
         unless params[:q].nil?
 
-                @commit_messages = Commit.github_commits(params[:q]) #this method should be refactored and moved to the model.  
+                @commit_messages = Commit.github_commits(params[:q]) #moved to model
                 #add the default option is to take it from user login
                 
 
