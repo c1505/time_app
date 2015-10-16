@@ -1,4 +1,4 @@
-# module CommitsHelper
+module CommitsHelper
 #      require 'json'
 #      require 'httparty'
 #   def github_commits(user)
@@ -17,8 +17,4 @@
 #       end
 #     end
 #     @commit_messages
-# end
-
-
-# push = events.select{|event| event['type'] == "PushEvent"
-#move to model
+end
