@@ -64,8 +64,6 @@
 
 <%= render partial: 'show' if (@article.project_time.to_f - 0.99) > (@article.sound_count ||= 1) %>
 
-<%= link_to "body", "https://odin-c1505.c9.io/users" %>
-
 <%= link_to "<< Back to Articles List", articles_path %>
 <%= link_to "delete", article_path(@article), method: :delete, data: {confirm: "Really delete the article?"}%>
 <%= link_to "edit", edit_article_path(@article) %>
